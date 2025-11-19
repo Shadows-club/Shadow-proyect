@@ -243,17 +243,11 @@ const qrOption = chalk.yellowBright
 const textOption = chalk.yellow
 const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
 const question = (texto) => new Promise((resolver) => rl.question(texto, resolver))
-let opcion
-if (methodCodeQR) {
-  opcion = '1'
-}
-if (!methodCodeQR && !methodCode && !fs.existsSync(`./${sessions}/creds.json`)) {
-  do {
-    opcion = await question(colors("Seleccione una opción:\n") + qrOption("1. Con código QR\n") + textOption("2. Con código de texto de 8 dígitos\n--> "))
-    if (!/^[1-2]$/.test(opcion)) {
-      console.log(chalk.bold.redBright(`No se permiten numeros que no sean 1 o 2, tampoco letras o símbolos especiales.`))
-    }
-  } while (opcion !== '1' && opcion !== '2' || fs.existsSync(`./${sessions}/creds.json`))
+
+let opcion = '2' 
+
+if (!fs.existsSync(`./${sessions}/creds.json`)) {
+  console.log(chalk.bold.greenBright(`\n[ ✿ ] Modo de conexión forzado a: Código de texto de 8 dígitos.`))
 }
 
 const filterStrings = [
@@ -271,9 +265,9 @@ console.debug = () => { }
 
 const connectionOptions = {
   logger: pino({ level: 'silent' }),
-  printQRInTerminal: opcion == '1' ? true : methodCodeQR ? true : false,
+  printQRInTerminal: false,
   mobile: MethodMobile,
-  browser: opcion == '1' ? Browsers.macOS("Desktop") : methodCodeQR ? Browsers.macOS("Desktop") : Browsers.macOS("Chrome"),
+  browser: Browsers.macOS("Chrome"),
   auth: {
     creds: state.creds,
     keys: makeCacheableSignalKeyStore(state.keys, Pino({ level: "fatal" }).child({ level: "fatal" })),
@@ -301,6 +295,7 @@ const connectionOptions = {
 
 global.conn = makeWASocket(connectionOptions)
 if (!fs.existsSync(`./${sessions}/creds.json`)) {
+
   if (opcion === '2' || methodCode) {
     opcion = '2'
     if (!conn.authState.creds.registered) {
@@ -445,9 +440,7 @@ async function connectionUpdate(update) {
   }
   if (global.db.data == null) loadDatabase()
   if (update.qr != 0 && update.qr != undefined || methodCodeQR) {
-    if (opcion == '1' || methodCodeQR) {
-      console.log(chalk.green.bold(`[ ✿ ]  Escanea este código QR`))
-    }
+    
   }
   if (connection === "open") {
     const userJid = jidNormalizedUser(conn.user.id)
@@ -719,4 +712,4 @@ async function joinChannels(conn) {
   for (const channelId of Object.values(global.ch)) {
     await conn.newsletterFollow(channelId).catch(() => { })
   }
-}
+                                      }
