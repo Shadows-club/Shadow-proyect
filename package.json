@@ -42,7 +42,7 @@
     "@ibaraki-douji/pixivts": "^2.4.1",
     "@octokit/rest": "^21.1.1",
     "@vitalets/google-translate-api": "^8.0.0",
-    "@whiskeysockets/baileys": "github:dev-fedexyzz/baileys",
+    "@whiskeysockets/baileys": "github:dev-fedexyzz/Bails-xyz",
     "@brandond/findthelyrics": "^2.0.5",
     "@shineiichijo/marika": "^2.0.6",
     "@xct007/frieren-scraper": "^0.0.2",
