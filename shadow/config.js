@@ -53,15 +53,15 @@ global.moneda = 'Yenes'
 
 // ━━━━━ ⋆★⋆ ━━━━━
 
-global.catalogo = fs.readFileSync('./plugins/imagen/shadow.jpg');
+global.catalogo = fs.readFileSync('./src/imagen/shadow.jpg');
 
 // ━━━━━ ⋆★⋆ ━━━━━
 
 let catalogo2;
 try {
-  catalogo2 = fs.readFileSync('./plugins/imagen/catalogo.png');
+  catalogo2 = fs.readFileSync('./src/imagen/catalogo.png');
 } catch (error) {
-  console.log('Warning: ./src/catalogo.png not found, using catalogo as fallback');
+  console.log('Warning: ./src/imagen/catalogo.png not found, using catalogo as fallback');
   catalogo2 = catalogo; // Using the existing 'catalogo' variable as fallback
 }
 global.photoSity = [catalogo2]
