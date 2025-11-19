@@ -57,7 +57,7 @@ if (global.opts.debugreg === undefined) {
   global.opts.debugreg = process.argv.includes('--debugreg')
 }
 const opts = global.opts
-global.prefix = new RegExp('^[#!./]')
+global.prefix = new RegExp('^[/]')
 
 const defaultData = { users: {}, chats: {}, stats: {}, msgs: {}, sticker: {}, settings: {} }
 // Usar siempre ruta absoluta para evitar que al ejecutar desde otro cwd se cree otro database.json
