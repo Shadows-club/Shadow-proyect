@@ -18,16 +18,16 @@
     "eslint": "eslint .",
     "eslintfix": "eslint --fix ."
   },
-  "homepage": "https://github.com/JoseXrl15k/Nino-Nakano",
+  "homepage": "https://github.com/Shadows-club",
   "author": {
-    "name": "Dev-fedexyz"
+    "name": "𝐅𝐞𝐝𝐞 𝐔𝐜𝐡𝐢𝐡𝐚"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoseXrl15k/Nino-Nakano.git"
+    "url": "git+https://github.com/Shadows-club.git"
   },
   "bugs": {
-    "url": "https://github.com/JoseXrl15k/Nino-Nakano/issues"
+    "url": "https://github.com/Shadows-club/issues"
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
